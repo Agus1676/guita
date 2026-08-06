@@ -1,50 +1,109 @@
-# Welcome to your Expo app 👋
+# 💰 Guita — App Nativa de Finanzas Personales & AI Advisor
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+[![React Native](https://img.shields.io/badge/React_Native-v0.76-61DAFB?logo=react&logoColor=black)](https://reactnative.dev/)
+[![Expo SDK 54](https://img.shields.io/badge/Expo-SDK_54-000000?logo=expo&logoColor=white)](https://expo.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-v5.3-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Get started
+**Guita** es una aplicación móvil nativa (iOS & Android) diseñada para el control inteligente de finanzas personales, gestión de presupuestos, metas de ahorro y monitoreo del mercado cambiario en Argentina.
 
-1. Install dependencies
+Construida bajo estándares de arquitectura limpia, **Guita** combina rendimiento nativo, almacenamiento híbrido seguro (SQLite local + AsyncStorage fallback), biometría de hardware y generación de reportes ejecutivos en PDF.
 
+---
+
+## 📱 Galería de Capturas (Screenshots)
+
+| Pantalla de Bloqueo / Onboarding | Dashboard Principal | Reportes & Gráficos |
+| :---: | :---: | :---: |
+| <img src="./assets/screenshots/onboarding.png" width="240" /> | <img src="./assets/screenshots/dashboard.png" width="240" /> | <img src="./assets/screenshots/charts.png" width="240" /> |
+
+*(Sugerencia: Colocá tus capturas de pantalla en la carpeta `./assets/screenshots/`)*
+
+---
+
+## 🔥 Características Destacadas
+
+- 🔒 **Seguridad Biometric Gate & PIN Numérico**:
+  - Autenticación biométrica de hardware con **Face ID** / **Touch ID** (`expo-local-authentication`).
+  - Teclado numérico táctil de 4 dígitos con animación de vibración háptica en PIN erróneo.
+
+- 💵 **Cotización del Dólar en Tiempo Real**:
+  - Integración en vivo con API financiera (`dolarapi.com`) para consultar **Dólar Blue** y **Dólar Oficial**.
+  - **Conversor instantáneo ARS ↔ USD**: Alterná la visualización de tu balance completo de Pesos a Dólares con un toque.
+
+- 🤖 **Guita AI Advisor**:
+  - Asistente financiero inteligente que analiza la relación Ingresos vs. Gastos y genera recomendaciones de ahorro personalizadas.
+
+- 🎯 **Widget de Meta de Ahorro Personalizable**:
+  - Seguimiento de objetivos financieros (ej: *Fondo de Emergencia*, *Vacaciones*) con barra de progreso animada y edición rápida.
+
+- 📄 **Generador de Reportes PDF Corporativos**:
+  - Exportación de documentos PDF ejecutivos (`expo-print`) con diseño de calidad bancaria, gradientes, resúmenes de saldo y tablas de movimientos.
+  - Exportación complementaria a formato CSV estructurado con codificación UTF-8 BOM para Microsoft Excel.
+
+- 💳 **Planificador de Cuotas Fijas**:
+  - Selección de gastos en **1, 3, 6 o 12 cuotas fijas** con cálculo de la cuota mensual en tiempo real.
+
+- 🍞 **UI Human Touch & Feedback Sensorial**:
+  - Notificaciones flotantes animadas tipo **Toast Banner** con glassmorphic styling.
+  - **Skeleton Loaders** con pulso de brillo animado durante la carga de datos.
+  - Personalización de Avatar Emoji (🚀, 🦊, ⚡, 👑, 💼, 💎, 🦁, 🦄, 🔮, 💸).
+
+- 🔔 **Notificaciones Push Diarias**:
+  - Recordatorio automático diario programado nativamente en el celular a las **21:00 hs**.
+
+- 📊 **Análisis Temporal Acumulado**:
+  - Gráficos donut y ranking top de categorías con filtro por **Este Mes**, **Últimos 3 Meses** o **6 Meses Acumulados (Marzo - Agosto 2026)**.
+
+---
+
+## 🛠️ Stack Tecnológico
+
+| Tecnología | Descripción |
+| :--- | :--- |
+| **Framework** | [React Native](https://reactnative.dev/) + [Expo SDK 54](https://expo.dev/) |
+| **Routing** | [Expo Router](https://docs.expo.dev/router/introduction/) (File-based navigation) |
+| **Lenguaje** | [TypeScript](https://www.typescriptlang.org/) (Strict type checking) |
+| **Base de Datos** | [expo-sqlite](https://docs.expo.dev/versions/latest/sdk/sqlite/) (iOS/Android) + `AsyncStorage` (Web) |
+| **PDF & Printing** | [expo-print](https://docs.expo.dev/versions/latest/sdk/print/) + `expo-sharing` |
+| **Gráficos** | [react-native-gifted-charts](https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts) |
+| **Biometría** | [expo-local-authentication](https://docs.expo.dev/versions/latest/sdk/local-authentication/) |
+| **Notificaciones** | [expo-notifications](https://docs.expo.dev/versions/latest/sdk/notifications/) |
+| **Feedback Háptico** | [expo-haptics](https://docs.expo.dev/versions/latest/sdk/haptics/) |
+
+---
+
+## 🚀 Instalación y Ejecución Local
+
+### Prerrequisitos
+- Node.js (v18+)
+- npm / yarn / pnpm
+- Aplicación **Expo Go** en tu dispositivo móvil (iOS / Android)
+
+### Pasos
+1. **Clonar el repositorio**:
+   ```bash
+   git clone https://github.com/<tu-usuario>/guita.git
+   cd guita
+   ```
+
+2. **Instalar dependencias**:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. **Iniciar el servidor de desarrollo Expo**:
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+4. **Ejecutar en tu dispositivo**:
+   - Escaneá el código QR desde la app **Expo Go** o Safari (`exp://<tu-ip>:8081`).
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📜 Licencia
 
-## Get a fresh project
+Este proyecto está bajo la Licencia MIT. Podés usarlo libremente para aprendizaje, portfolio personal o desarrollo profesional.
 
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Desarrollado con ❤️ por **Aguss** 🚀
