@@ -13,9 +13,13 @@ Construida bajo estándares de arquitectura limpia, **Guita** combina rendimient
 
 ## 📱 Galería de Capturas (Screenshots)
 
-| Pantalla de Onboarding / Auth | Dashboard Principal |
+| Onboarding / Auth | Dashboard Principal | Nuevo Movimiento |
+| :---: | :---: | :---: |
+| <img src="./assets/screenshots/onboarding.png" width="240" /> | <img src="./assets/screenshots/dashboard.png" width="240" /> | <img src="./assets/screenshots/add.png" width="240" /> |
+
+| Historial & Reportes | Estadísticas & Gráficos |
 | :---: | :---: |
-| <img src="./assets/screenshots/onboarding.png" width="300" /> | <img src="./assets/screenshots/dashboard.png" width="300" /> |
+| <img src="./assets/screenshots/history.png" width="240" /> | <img src="./assets/screenshots/charts.png" width="240" /> |
 
 ---
 
