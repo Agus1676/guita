@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Platform } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useSQLiteContext } from 'expo-sqlite';
 import { useTheme } from '@/context/ThemeContext';
 import { useDatabaseContext } from '@/context/DatabaseContext';
 import { FontSize, BorderRadius, Spacing } from '@/constants/theme';
@@ -11,9 +10,7 @@ import MonthPicker from '@/components/MonthPicker';
 import EmptyState from '@/components/EmptyState';
 import { PieChart } from 'react-native-gifted-charts';
 import { Ionicons } from '@expo/vector-icons';
-import * as dbNative from '@/db/database.native';
-import * as dbWeb from '@/db/database.web';
-import type { CategoryTotal, MonthlyBalance } from '@/db/database';
+import { getTransactions, type CategoryTotal, type MonthlyBalance } from '@/db/database';
 
 type PeriodMode = 'month' | '3months' | '6months';
 
@@ -25,16 +22,7 @@ export default function ChartsScreen() {
   const [customTotals, setCustomTotals] = useState<CategoryTotal[]>([]);
   const [customBalance, setCustomBalance] = useState<MonthlyBalance>({ income: 0, expense: 0, balance: 0 });
 
-  let sqliteDb: any = null;
-  if (Platform.OS !== 'web') {
-    try {
-      sqliteDb = useSQLiteContext();
-    } catch (e) {}
-  }
-
   const loadPeriodData = useCallback(async () => {
-    const db = Platform.OS === 'web' ? dbWeb : dbNative;
-
     if (periodMode === 'month') {
       setCustomTotals(categoryTotals);
       setCustomBalance(monthlyBalance);
@@ -48,7 +36,7 @@ export default function ChartsScreen() {
       startDate = '2026-03-01';
     }
 
-    const allTxs = await db.getTransactions(sqliteDb, { startDate, endDate });
+    const allTxs = await getTransactions(null, { startDate, endDate });
 
     let income = 0;
     let expense = 0;

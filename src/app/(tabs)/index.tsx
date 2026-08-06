@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator, Platform, Alert } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { useSQLiteContext } from 'expo-sqlite';
 import { useTheme } from '@/context/ThemeContext';
 import { useDatabaseContext } from '@/context/DatabaseContext';
 import { useUser } from '@/context/UserContext';
@@ -41,13 +40,6 @@ export default function DashboardScreen() {
   const [loadingDolar, setLoadingDolar] = useState(true);
   const [showAvatarPicker, setShowAvatarPicker] = useState(false);
 
-  let sqliteDb: any = null;
-  if (Platform.OS !== 'web') {
-    try {
-      sqliteDb = useSQLiteContext();
-    } catch (e) {}
-  }
-
   useEffect(() => {
     async function initDashboard() {
       const data = await fetchDolarRates();
@@ -59,7 +51,7 @@ export default function DashboardScreen() {
   }, []);
 
   const handleSeedHistory = async () => {
-    await forceSeedSampleData(sqliteDb);
+    await forceSeedSampleData(null);
     await refreshData();
     showToast('22 Movimientos de prueba cargados 🚀', 'success');
   };
