@@ -13,11 +13,9 @@ Construida bajo estándares de arquitectura limpia, **Guita** combina rendimient
 
 ## 📱 Galería de Capturas (Screenshots)
 
-| Pantalla de Bloqueo / Onboarding | Dashboard Principal | Reportes & Gráficos |
-| :---: | :---: | :---: |
-| <img src="./assets/screenshots/onboarding.png" width="240" /> | <img src="./assets/screenshots/dashboard.png" width="240" /> | <img src="./assets/screenshots/charts.png" width="240" /> |
-
-*(Sugerencia: Colocá tus capturas de pantalla en la carpeta `./assets/screenshots/`)*
+| Pantalla de Onboarding / Auth | Dashboard Principal |
+| :---: | :---: |
+| <img src="./assets/screenshots/onboarding.png" width="300" /> | <img src="./assets/screenshots/dashboard.png" width="300" /> |
 
 ---
 
